@@ -11,5 +11,8 @@
     "Server-side"
   ],
   "author": "David Castellar Martínez",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
 }
