@@ -1,6 +1,6 @@
 import User from '../models/user';
 
-const addUser = async (newUser: JSON) => {
+const create = async (newUser: JSON) => {
   const user = new User(newUser);
 
   try {
@@ -10,4 +10,4 @@ const addUser = async (newUser: JSON) => {
   }
 }
 
-export { addUser }
+export { create }

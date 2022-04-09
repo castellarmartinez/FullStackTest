@@ -1,15 +1,15 @@
 import express from "express";
-import { addUser } from "../controllers/users-controller";
+import * as user from "../controllers/users-controller";
 
 const router = express.Router();
 
 router.post("/register", async (req, res) => {
-  const success = await addUser(req.body);
+  const success = await user.create(req.body);
 
   if (success) {
     res.status(201).json({
       message:
-        "Congratulations!\nYour account has been successfully" + " created.",
+        "Congratulations!\nYour account has been created",
     });
   } else {
     res.status(500).json({
