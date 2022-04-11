@@ -18,6 +18,7 @@ const create = async (newUser: JSON) => {
 const login = async (user: any) => {
   try {
     const token = jwt.sign({ _id: user._id.toString() }, SECRET_PASS as string);
+    
     user.token = token;
     await user.save();
     return token;

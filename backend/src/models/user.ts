@@ -42,9 +42,11 @@ const userSchema = new mongoose.Schema<userInterface>({
 userSchema.pre("save", function (next) {
   const user = this;
 
-  user.password = bcrypt.hashSync(user.password, 8);
-  user.name = user.name.toLowerCase();
-  user.name = user.name.replace(/\b\w/g, (c) => c.toUpperCase());
+  if (user.isModified("name")) { // Does this only when the users is created
+   user.password = bcrypt.hashSync(user.password, 8);
+   user.name = user.name.toLowerCase();
+   user.name = user.name.replace(/\b\w/g, (c) => c.toUpperCase()); //Capitalize initial letters
+  }
 
   next();
 });
